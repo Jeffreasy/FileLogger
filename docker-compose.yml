@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    environment:
+      - SCAN_WORKER_COUNT=4
+      - SCAN_BUFFER_SIZE=1000
+      - MAX_FILE_SIZE_MB=50
+    restart: unless-stopped 
